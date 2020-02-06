@@ -1147,7 +1147,7 @@ const char *get_link(struct nameidata *nd)
 		return ERR_PTR(error);
 
 	nd->last_type = LAST_BIND;
-	res = READ_ONCE(inode->i_link);
+	res = inode->i_link;
 	if (!res) {
 		if (nd->flags & LOOKUP_RCU) {
 			if (unlikely(unlazy_walk(nd, NULL, 0)))
@@ -4736,10 +4736,8 @@ int generic_readlink(struct dentry *dentry, char __user *buffer, int buflen)
 {
 	void *cookie;
 	struct inode *inode = d_inode(dentry);
-	const char *link;
+	const char *link = inode->i_link;
 	int res;
-
-	link = READ_ONCE(inode->i_link);
 
 	if (!link) {
 		link = inode->i_op->follow_link(dentry, &cookie);
