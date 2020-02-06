@@ -221,8 +221,6 @@ sdm660-mtp-overlay.dtbo-base := sdm660-mtp_f7a.dtb
 #sdm660-cdp-overlay.dtbo-base := sdm660-mtp_f7a.dtb
 else
 dtb-$(CONFIG_ARCH_SDM660) += sdm660-mtp_f7a.dtb \
-	sdm636-mtp_e7t.dtb \
-	sdm660-mtp_wayne.dtb \
 	sdm660-sim.dtb \
 	sdm660-internal-codec-cdp.dtb \
 	sdm660-internal-codec-mtp.dtb \
@@ -302,40 +300,6 @@ dtb-$(CONFIG_ARCH_SDM660) += sdm660-mtp_f7a.dtb \
 	sda636-pm660a-qrd-hdk.dtb \
 	sda636-pm660a-rcm.dtb
 endif
-
-dtb-$(CONFIG_ARCH_SDM630) += sdm630-rumi.dtb \
-	sdm630-pm660a-rumi.dtb \
-	sdm630-mtp.dtb \
-	sdm630-usbc-audio-mtp.dtb \
-	sdm630-usbc-audio-rcm.dtb \
-	sdm630-cdp.dtb \
-	sdm630-rcm.dtb \
-	sdm630-internal-codec-mtp.dtb \
-	sdm630-internal-codec-cdp.dtb \
-	sdm630-internal-codec-rcm.dtb \
-	sdm630-pm660a-cdp.dtb \
-	sdm630-pm660a-mtp.dtb \
-	sdm630-pm660a-rcm.dtb \
-	sdm630-pm660a-qrd.dtb \
-	sdm630-internal-codec-pm660a-cdp.dtb \
-	sdm630-internal-codec-pm660a-mtp.dtb \
-	sdm630-internal-codec-pm660a-rcm.dtb \
-	sda630-mtp.dtb \
-	sda630-cdp.dtb \
-	sda630-rcm.dtb \
-	sda630-pm660a-mtp.dtb \
-	sda630-pm660a-cdp.dtb \
-	sda630-pm660a-rcm.dtb \
-	sda630-pm660a-qrd-hdk.dtb \
-	sdm630-headset-jacktype-no-cdp.dtb \
-	sdm630-headset-jacktype-no-rcm.dtb \
-	sdm630-pm660a-headset-jacktype-no-cdp.dtb \
-	sdm630-pm660a-headset-jacktype-no-rcm.dtb \
-	sdm455-mtp.dtb \
-	sdm455-qrd.dtb \
-	sdm455-cdp.dtb \
-	sdm455-rcm.dtb \
-	sdm455-internal-codec-rcm.dtb
 
 ifeq ($(CONFIG_ARM64),y)
 always          := $(dtb-y)
