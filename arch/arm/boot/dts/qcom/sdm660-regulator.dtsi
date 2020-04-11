@@ -522,7 +522,7 @@
 		compatible = "qcom,stub-regulator";
 		regulator-name = "gfx_stub_corner";
 		regulator-min-microvolt = <370000>;
-		regulator-max-microvolt = <1040000>;
+		regulator-max-microvolt = <940000>;
 	};
 };
 
@@ -599,10 +599,10 @@
 
 				qcom,cpr-voltage-ceiling =
 					<585000  645000  725000  790000
-					 870000  925000 1040000>;
+					 870000  925000 940000>;
 				qcom,cpr-voltage-floor =
 					<504000  504000  596000  652000
-					 712000  714000 1040000>;
+					 712000  714000 940000>;
 
 				qcom,mem-acc-voltage = <1 1 1 2 2 2 2>;
 				qcom,system-voltage =
@@ -749,7 +749,7 @@
 
 				qcom,cpr-voltage-ceiling =
 					< 694000  694000  694000  758000  838000
-					 1038000 1038000 1038000>;
+					 988000 988000 988000>;
 
 				qcom,cpr-voltage-floor =
 					<558000  558000  566000  622000  682000
@@ -900,7 +900,7 @@
 
 				qcom,cpr-voltage-ceiling =
 					<694000  694000  758000  838000
-					 958000  958000 1038000>;
+					 908000  908000 988000>;
 
 				qcom,cpr-voltage-floor =
 					<558000  566000  622000  682000
