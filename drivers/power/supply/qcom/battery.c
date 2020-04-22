@@ -105,10 +105,6 @@ enum {
 	RESTRICT_CHG_CURRENT,
 };
 
-#if defined(CONFIG_KERNEL_CUSTOM_E7S)
-#define ONLY_PM660_CURRENT_UA 2000000
-#endif
-
 /*******
  * ICL *
 ********/
@@ -198,15 +194,6 @@ static void split_settled(struct pl_data *chip)
 		}
 
 		pval.intval = total_current_ua - slave_ua;
-		#if defined(CONFIG_KERNEL_CUSTOM_E7S)
-		if (chip->pl_mode == POWER_SUPPLY_PL_USBIN_USBIN) {
-			pr_err("pl_disable_votable effective main_psy current_ua =%d \n", pval.intval);
-			if (get_effective_result_locked(chip->pl_disable_votable) && (pval.intval > ONLY_PM660_CURRENT_UA)){
-				pr_err("pl_disable_votable effective main_psy force current_ua =%d to %d \n", pval.intval, ONLY_PM660_CURRENT_UA);
-			pval.intval = ONLY_PM660_CURRENT_UA;
-			}
-		}
-		#endif
 		/* Set ICL on main charger */
 		rc = power_supply_set_property(chip->main_psy,
 				POWER_SUPPLY_PROP_CURRENT_MAX, &pval);
@@ -541,15 +528,6 @@ static int pl_fcc_vote_callback(struct votable *votable, void *data,
 			return 0;
 		}
 		pval.intval = total_fcc_ua;
-		#if defined(CONFIG_KERNEL_CUSTOM_E7S)
-		if (chip->pl_mode == POWER_SUPPLY_PL_USBIN_USBIN) {
-			pr_err("pl_disable_votable effective total_fcc_ua =%d \n", total_fcc_ua);
-			if (pval.intval > ONLY_PM660_CURRENT_UA) {
-		pval.intval = ONLY_PM660_CURRENT_UA;
-		pr_err("pl_disable_votable effective total_fcc_ua =%d froce to %d \n", total_fcc_ua, pval.intval);
-			}
-		}
-		#endif
 		rc = power_supply_set_property(chip->main_psy,
 				POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT_MAX,
 				&pval);
